@@ -90,10 +90,7 @@ const LeadInformationDetails = () => {
             classNames={{ value: "font-normal text-base" }}
             label="Photo URL"
             value={
-              <Anchor
-                href={data?.personal_details?.linkedin_url}
-                target="_blank"
-              >
+              <Anchor href={data?.personal_details?.logo_url} target="_blank">
                 Photo URL
               </Anchor>
             }
@@ -105,45 +102,38 @@ const LeadInformationDetails = () => {
         <CardTitle>Lead Details</CardTitle>
         <div className="grid grid-cols-4 gap-4">
           <LabelWithValue
-            classNames={{ value: "font-normal text-base", label: "" }}
-            label="Name"
-            value={data?.lead_details?.name || "darhir"}
-          />
-          <LabelWithValue
-            classNames={{ value: "font-normal text-base" }}
-            label="Email"
-            value={data?.lead_details?.email}
-          />
-          <LabelWithValue
-            classNames={{ value: "font-normal text-base" }}
-            label="Phone"
-            value={data?.lead_details?.phone}
-          />
-          <LabelWithValue
             classNames={{ value: "font-normal text-base" }}
             label="City"
             value={data?.lead_details?.city}
           />
           <LabelWithValue
-            label="Country"
             classNames={{ value: "font-normal text-base" }}
+            label="country"
             value={data?.lead_details?.country}
           />
           <LabelWithValue
-            label="State"
             classNames={{ value: "font-normal text-base" }}
-            value={data?.lead_details?.state}
+            label="Description"
+            value={data?.lead_details?.description}
           />
           <LabelWithValue
-            label="Current Job Title"
             classNames={{ value: "font-normal text-base" }}
-            value={data?.lead_details?.current_job_title}
+            label="Founded Year"
+            value={data?.lead_details?.founded_year}
+          />
+          <LabelWithValue
+            classNames={{ value: "font-normal text-base" }}
+            label="Industry"
+            value={data?.lead_details?.industry}
           />
           <LabelWithValue
             classNames={{ value: "font-normal text-base" }}
             label="Linkedin URL"
             value={
-              <Anchor href={data?.lead_details?.linkedin_url} target="_blank">
+              <Anchor
+                href={data?.personal_details?.linkedin_url}
+                target="_blank"
+              >
                 Linkedin URL
               </Anchor>
             }
@@ -152,11 +142,54 @@ const LeadInformationDetails = () => {
             classNames={{ value: "font-normal text-base" }}
             label="Photo URL"
             value={
-              <Anchor href={data?.lead_details?.linkedin_url} target="_blank">
+              <Anchor href={data?.personal_details?.logo_url} target="_blank">
                 Photo URL
               </Anchor>
             }
           />
+          <LabelWithValue
+            classNames={{ value: "font-normal text-base" }}
+            label="Name"
+            value={data?.lead_details?.name}
+          />
+          {/* <LabelWithValue
+            classNames={{ value: "font-normal text-base" }}
+            label="Short Description"
+            value={data?.lead_details?.short_description}
+          /> */}
+          <LabelWithValue
+            classNames={{ value: "font-normal text-base" }}
+            label="state"
+            value={data?.lead_details?.state}
+          />
+          {/* {data?.personal_details?.twitter_url && ( */}
+          <LabelWithValue
+            classNames={{ value: "font-normal text-base" }}
+            label="Twitter URL"
+            value={
+              <Anchor
+                href={data?.personal_details?.twitter_url}
+                target="_blank"
+              >
+                {data?.personal_details?.twitter_url ? "Twitter URL" : "-"}
+              </Anchor>
+            }
+          />
+          {/* )} */}
+          {/* {data?.personal_details?.website_url && ( */}
+          <LabelWithValue
+            classNames={{ value: "font-normal text-base" }}
+            label="Website URL"
+            value={
+              <Anchor
+                href={data?.personal_details?.website_url}
+                target="_blank"
+              >
+                {data?.personal_details?.website_url ? "Website URL" : "-"}
+              </Anchor>
+            }
+          />
+          {/* )} */}
         </div>
       </Card>
     </div>
