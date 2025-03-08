@@ -1,12 +1,15 @@
 import { IconMicrophone } from "@tabler/icons-react";
 import React, { useRef, useState } from "react";
 import axios from "axios";
+import { Select } from "@mantine/core";
+import { toast } from "sonner";
 
-const VoiceChatUi = () => {
+const VoiceChatUi = ({ setObjections }) => {
   const [messages, setMessages] = useState([]);
   const [isListening, setIsListening] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isCalling, setIsCalling] = useState(false);
+  const [language, setLanguage] = useState("en-US");
   const recognitionRef = useRef(null);
   const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -14,7 +17,7 @@ const VoiceChatUi = () => {
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
     recognitionRef.current = new SpeechRecognition();
-    recognitionRef.current.lang = "en-US";
+    recognitionRef.current.lang = language;
     recognitionRef.current.continuous = true;
     recognitionRef.current.interimResults = false;
 
@@ -65,6 +68,11 @@ const VoiceChatUi = () => {
         { text: response?.data?.output, sender: "server" },
       ]);
       speakText(response?.data?.output);
+      if (response?.data?.objections) {
+        setObjections(response?.data?.objections);
+        stopListening();
+        setIsCalling(false);
+      }
     } catch (error) {
       const errorMessage =
         error.response?.data?.message || "Something went wrong.";
@@ -76,8 +84,9 @@ const VoiceChatUi = () => {
   };
 
   const speakText = (text) => {
+    window.speechSynthesis.cancel();
     const speech = new SpeechSynthesisUtterance(text);
-    speech.lang = "en-US";
+    speech.lang = language;
     speech.rate = 1;
     speech.pitch = 1;
     speech.volume = 1;
@@ -105,6 +114,16 @@ const VoiceChatUi = () => {
           <h2 className="text-lg font-semibold">Violet Mendoza</h2>
           <p className="text-sm opacity-80">Online</p>
         </div>
+        <Select
+          data={[
+            { value: "en-US", label: "English" },
+            { value: "hi-IN", label: "Hindi" },
+          ]}
+          value={language}
+          onChange={setLanguage}
+          className="ml-auto w-36"
+          placeholder="Select Language"
+        />
       </div>
       <div className="flex-1 overflow-y-auto p-4 space-y-3 scrollbar-custom">
         {messages.map((msg, index) => (

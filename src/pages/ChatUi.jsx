@@ -1,17 +1,20 @@
 import { IconSend } from "@tabler/icons-react";
-import { useState } from "react";
+import React, { useState } from "react";
 
-const RollPlayChatUi = () => {
+const ChatUi = () => {
   const [messages, setMessages] = useState([]);
   const [inputText, setInputText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
 
   const handleSendMessage = () => {
     if (!inputText.trim()) return;
+
+    // Add user message
     setMessages((prev) => [...prev, { text: inputText, sender: "user" }]);
     setInputText("");
     setIsTyping(true);
 
+    // Simulate server response delay
     setTimeout(() => {
       setMessages((prev) => [
         ...prev,
@@ -54,7 +57,7 @@ const RollPlayChatUi = () => {
             <p
               className={`max-w-xs px-3 py-2 rounded-lg shadow-md ${
                 msg.sender === "user"
-                  ? "bg-[#3C5AA7] text-white"
+                  ? "bg-blue-600 text-white"
                   : "bg-gray-200 text-black"
               }`}
             >
@@ -62,6 +65,8 @@ const RollPlayChatUi = () => {
             </p>
           </div>
         ))}
+
+        {/* Typing Indicator */}
         {isTyping && (
           <div className="flex items-center gap-2">
             <p className="bg-gray-200 px-3 py-2 rounded-lg shadow-md">...</p>
@@ -69,6 +74,7 @@ const RollPlayChatUi = () => {
         )}
       </div>
 
+      {/* Input Field */}
       <div className="flex items-center bg-[#222a42] p-3 rounded-full shadow-md m-4">
         <input
           type="text"
@@ -77,14 +83,13 @@ const RollPlayChatUi = () => {
           onKeyDown={handleKeyPress}
           className="flex-1 bg-transparent text-white outline-none px-3 placeholder-gray-400"
           placeholder="Type a message..."
-          autoFocus
         />
         <button onClick={handleSendMessage} className="p-2">
-          <IconSend className="w-6 h-6 text-blue-400 hover:text-blue-500 cursor-pointer" />
+          <IconSend className="w-6 h-6 text-blue-400 hover:text-blue-500" />
         </button>
       </div>
     </div>
   );
 };
 
-export default RollPlayChatUi;
+export default ChatUi;
