@@ -5,9 +5,6 @@ import { IconEye } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "sonner";
-import LabelWithValue from "../components/common/LableWithValue";
-import { Card } from "../components/common/Card";
-import { CardTitle } from "../components/common/CardTitle";
 
 const LeadInformation = () => {
   const navigate = useNavigate();
@@ -18,8 +15,6 @@ const LeadInformation = () => {
   const getLeadData = async () => {
     try {
       const res = await axios.get(`${BASE_URL}/users-data/`);
-      console.log("res:::::", res);
-
       setLeadData(res?.data);
     } catch (error) {
       toast.error(error.response.data.message);
@@ -29,8 +24,6 @@ const LeadInformation = () => {
   useEffect(() => {
     getLeadData();
   }, []);
-
-  console.log("leadData:::::", leadData);
 
   const columns = useMemo(
     () => [

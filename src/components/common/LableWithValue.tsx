@@ -26,10 +26,10 @@ const LabelWithValue = (props: LabelWithValueProps) => {
             )}
             {...rest}
         >
-            <h4 className={clsx("text-gray-6 text-sm font-medium", classNames?.label)}>
+            <h4 className={clsx("text-gray-6 font-medium", classNames?.label)}>
                 {label}
             </h4>
-            <h2 className={clsx("font-bold text-gray-10 text-lg", classNames?.value)}>
+            <h2 className={clsx("font-bold text-[#5D596C]", classNames?.value)}>
                 {value || "-"}
             </h2>
         </div>
