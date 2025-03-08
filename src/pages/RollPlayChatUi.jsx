@@ -29,7 +29,7 @@ const RollPlayChatUi = () => {
         gender,
       });
       
-      const serverMessage = { text: response.data?.response || "No response received", sender: "server" };
+      const serverMessage = { text: response.data?.roleplay_response || "No response received", sender: "server" };
       setMessages((prev) => [...prev, serverMessage]);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -97,7 +97,7 @@ const RollPlayChatUi = () => {
             }`}
           >
             <p
-              className={`max-w-xs px-3 py-2 rounded-lg shadow-md ${
+              className={`max-w-md px-3 py-2 rounded-lg shadow-md ${
                 msg.sender === "user"
                   ? "bg-[#3C5AA7] text-white"
                   : "bg-gray-200 text-black"

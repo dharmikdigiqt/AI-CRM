@@ -19,7 +19,7 @@ const DashboardLayout = () => {
     },
     {
       link: "/roll-play",
-      displayName: "Roll Play",
+      displayName: "Role Play",
       icon: IconWorldDollar,
     },
   ];
