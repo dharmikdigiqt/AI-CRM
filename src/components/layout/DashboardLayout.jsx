@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Box, Text } from "@mantine/core";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import { IconMessages, IconUsers } from "@tabler/icons-react";
+import { IconMessages, IconUsers, IconWorldDollar } from "@tabler/icons-react";
 
 const DashboardLayout = () => {
   const location = useLocation();
@@ -16,6 +16,11 @@ const DashboardLayout = () => {
       link: "/chat",
       displayName: "Chat",
       icon: IconMessages,
+    },
+    {
+      link: "/roll-play",
+      displayName: "Roll Play",
+      icon: IconWorldDollar,
     },
   ];
 
