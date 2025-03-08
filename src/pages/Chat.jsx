@@ -1,5 +1,6 @@
 import { IconMicrophone, IconSend } from "@tabler/icons-react";
 import { useState } from "react";
+import { Card } from "../components/common/Card";
 
 const Chat = () => {
   const [messages, setMessages] = useState([]);
@@ -47,9 +48,9 @@ const Chat = () => {
 
   return (
     <>
-      <div className="grid grid-cols-3 p-6">
-        <div>darshit</div>
-        <div className="flex flex-col h-[100vh] bg-[#1a1a2e] text-white p-4">
+      <div className="grid grid-cols-3 p-6 gap-6">
+        <Card />
+        <div className="flex flex-col h-[calc(100vh-48px)] bg-[#1a1a2e] text-white p-4">
           {/* Chat Messages */}
           <div className="flex-1 overflow-y-auto space-y-3 p-2">
             {messages.map((msg, index) => (
