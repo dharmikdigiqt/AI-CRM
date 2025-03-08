@@ -8,6 +8,10 @@ const Chat = lazy(() => import("./pages/Chat.jsx"));
 const DashboardLayout = lazy(() =>
   import("./components/layout/DashboardLayout.jsx")
 );
+const LeadInformation = lazy(() => import("./pages/LeadInformation.jsx"));
+const LeadInformationDetails = lazy(() =>
+  import("./pages/LeadInformationDetails.jsx")
+);
 
 const App = () => {
   return (
@@ -17,6 +21,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<DashboardLayout />}>
               <Route path="/chat" element={<Chat />} />
+              <Route path="/lead" element={<LeadInformation />} />
+              <Route path="/lead/:id" element={<LeadInformationDetails />} />
             </Route>
           </Routes>
         </Suspense>
