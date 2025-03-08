@@ -31,9 +31,9 @@ const DashboardLayout = ({ children }) => {
                   to={content.link}
                   className={`${
                     isActive
-                      ? "text-[#1c3881] font-bold bg-blue-50 px-1"
+                      ? "text-[#1c3881] font-bold bg-blue-50"
                       : "text-[rgb(0,94,158)]"
-                  } hover:bg-gray-100 my-1 py-2 px-1`}
+                  } hover:bg-gray-100 my-1 p-4 rounded-lg`}
                 >
                   <Box className="flex items-center">
                     {Component && <Component className="mr-2" />}
