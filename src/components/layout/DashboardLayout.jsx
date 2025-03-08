@@ -1,17 +1,21 @@
 import { Fragment } from "react";
 import { Box, Text } from "@mantine/core";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import { IconMessages } from "@tabler/icons-react";
+import { IconMessages, IconUsers } from "@tabler/icons-react";
 
-// eslint-disable-next-line react/prop-types
-const DashboardLayout = ({ children }) => {
+const DashboardLayout = () => {
   const location = useLocation();
 
   const routePages = [
     {
+      link: "/lead",
+      displayName: "Lead Information",
+      icon: IconUsers,
+    },
+    {
       link: "/chat",
       displayName: "Chat",
-      icon: IconMessages, // Add this if needed
+      icon: IconMessages,
     },
   ];
 
@@ -22,8 +26,8 @@ const DashboardLayout = ({ children }) => {
         <Text className="text-xl font-bold mb-4 cursor-pointer">Dashboard</Text>
         <Box className="flex flex-col mt-5">
           {routePages.map((content, index) => {
-            const Component = content.icon || null; // Prevents errors if no icon
-            const isActive = location.pathname === content.link;
+            const Component = content.icon || null;
+            const isActive = location.pathname.startsWith(content.link); // Updated condition
 
             return (
               <Fragment key={index}>
@@ -46,7 +50,7 @@ const DashboardLayout = ({ children }) => {
         </Box>
       </Box>
 
-      <div className="w-[85%]  bg-gray-100 overflow-y-auto h-screen">
+      <div className="w-[85%] bg-gray-100 overflow-y-auto h-screen p-6">
         <Outlet />
       </div>
     </div>
