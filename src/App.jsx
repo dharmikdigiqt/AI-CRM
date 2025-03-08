@@ -3,6 +3,7 @@ import { Loader } from "@mantine/core";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { Route, Routes } from "react-router-dom";
 import { Toaster } from "sonner";
+import "regenerator-runtime/runtime";
 
 const Chat = lazy(() => import("./pages/Chat.jsx"));
 const DashboardLayout = lazy(() =>
