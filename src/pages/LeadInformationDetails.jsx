@@ -204,7 +204,7 @@ const LeadInformationDetails = () => {
             onClick={() => setCurrentPage(currentPage - 1)}
             disabled={currentPage === 0}
           >
-            ⬅️ Previous
+           Previous
           </Button>
 
           <span className="text-sm text-gray-600">
@@ -215,7 +215,7 @@ const LeadInformationDetails = () => {
             onClick={() => setCurrentPage(currentPage + 1)}
             disabled={currentPage + 1 >= totalPages}
           >
-            Next ➡️
+            Next
           </Button>
         </div>
       </Card>
