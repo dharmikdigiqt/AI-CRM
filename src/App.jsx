@@ -3,11 +3,17 @@ import { Loader } from "@mantine/core";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { Route, Routes } from "react-router-dom";
 import { Toaster } from "sonner";
-// import DashboardLayout from "./components/layout/DashboardLayout.jsx";
+
 const Chat = lazy(() => import("./pages/Chat.jsx"));
 const DashboardLayout = lazy(() =>
   import("./components/layout/DashboardLayout.jsx")
 );
+const LeadInformation = lazy(() => import("./pages/LeadInformation.jsx"));
+const LeadInformationDetails = lazy(() =>
+  import("./pages/LeadInformationDetails.jsx")
+);
+
+const RollPlay = lazy(() => import("./pages/RollPlay.jsx"));
 
 const App = () => {
   return (
@@ -17,6 +23,9 @@ const App = () => {
           <Routes>
             <Route path="/" element={<DashboardLayout />}>
               <Route path="/chat" element={<Chat />} />
+              <Route path="/lead" element={<LeadInformation />} />
+              <Route path="/lead/:id" element={<LeadInformationDetails />} />
+              <Route path="/roll-play" element={<RollPlay />} />
             </Route>
           </Routes>
         </Suspense>
