@@ -1,16 +1,13 @@
 import { useState } from "react";
-import { Card } from "../components/common/Card";
 import VoiceChatUi from "./VoiceChatUi";
-import ChatUi from "./ChatUi";
 
 const Chat = () => {
   const [objections, setObjections] = useState(null);
-  
   return (
     <>
       <div className="grid grid-cols-2 gap-6">
         <div>
-        <VoiceChatUi setObjections={setObjections} />
+          <VoiceChatUi setObjections={setObjections} />
         </div>
         <div>
           {objections && (

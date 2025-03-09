@@ -133,7 +133,7 @@ const VoiceChatUi = ({ setObjections }) => {
               msg.sender === "user" ? "flex-row-reverse" : ""
             } px-4 py-2`}
           >
-            <p className="bg-gray-200 rounded-lg p-2">{msg.text}</p>
+            <p className="bg-gray-200 rounded-lg p-2">{msg?.text}</p>
           </div>
         ))}
       </div>
