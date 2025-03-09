@@ -14,14 +14,14 @@ const DashboardLayout = () => {
       icon: IconUsers,
     },
     {
-      link: "/chat",
-      displayName: "Chat",
-      icon: IconMessages,
-    },
-    {
       link: "/roll-play",
       displayName: "Role Play",
       icon: IconWorldDollar,
+    },
+    {
+      link: "/chat",
+      displayName: "Chat",
+      icon: IconMessages,
     },
   ];
 
@@ -29,9 +29,8 @@ const DashboardLayout = () => {
     <div className="flex">
       {/* Sidebar */}
       <Box className="w-[15%] bg-white p-4 h-screen overflow-y-auto">
-        <div className="items-center justify-center flex  rounded">
-           <img src={Logo} alt="Logo" className="h-20 w-40 cursor-pointer" />
-
+        <div className="items-center justify-center">
+            Dev - Dominators .
         </div>
         <Box className="flex flex-col mt-5">
           {routePages.map((content, index) => {
