@@ -173,13 +173,12 @@
 
 // export default VoiceChatUi;
 
-
 import { IconMicrophone } from "@tabler/icons-react";
 import React, { useRef, useState } from "react";
 import axios from "axios";
 import { Select } from "@mantine/core";
 import { toast } from "sonner";
-const VoiceChatUi = ({ setObjections }) => {
+const VoiceChatUi = ({ setObjections, setBrandData }) => {
   const [messages, setMessages] = useState([]);
   const [isListening, setIsListening] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -254,8 +253,12 @@ const VoiceChatUi = ({ setObjections }) => {
         { text: response?.data?.output, sender: "server" },
       ]);
       speakText(response?.data?.output);
-      if (response?.data?.objections) {
-        setObjections(response?.data?.objections);
+      if (response?.data?.objections || response?.data?.brand_data) {
+        let formattedText = response?.data?.output
+          .replace(/"/g, "") // Remove double quotes
+          .replace(/\d+\.\s/g, "\n\n"); // Replace "1. " with two new lines
+        setObjections(formattedText);
+        setBrandData(response?.data?.brand_data);
         stopListening();
         setIsCalling(false);
       }
@@ -319,6 +322,11 @@ const VoiceChatUi = ({ setObjections }) => {
             <p className="bg-gray-200 rounded-lg p-2">{msg?.text}</p>
           </div>
         ))}
+        {isLoading && (
+          <div className="flex items-center gap-2">
+            <p className="bg-gray-200 px-3 py-2 rounded-lg shadow-md">...</p>
+          </div>
+        )}
       </div>
       <div className="flex items-center bg-gray-100 p-3 border-t flex-col gap-2">
         <button
