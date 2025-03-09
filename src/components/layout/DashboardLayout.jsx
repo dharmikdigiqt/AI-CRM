@@ -20,7 +20,7 @@ const DashboardLayout = () => {
     },
     {
       link: "/chat",
-      displayName: "Chat",
+      displayName: "Voice Bot",
       icon: IconMessages,
     },
   ];
