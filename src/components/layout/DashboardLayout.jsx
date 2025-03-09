@@ -29,10 +29,10 @@ const DashboardLayout = () => {
     <div className="flex">
       {/* Sidebar */}
       <Box className="w-[15%] bg-white p-4 h-screen overflow-y-auto">
-        <div className="items-center justify-center">
+        <div className="items-center justify-center font-bold text-[#3C5AA7] flex text-lg">
             Dev - Dominators .
         </div>
-        <Box className="flex flex-col mt-5">
+        <Box className="flex flex-col mt-4">
           {routePages.map((content, index) => {
             const Component = content.icon || null;
             const isActive = location.pathname.startsWith(content.link); // Updated condition
