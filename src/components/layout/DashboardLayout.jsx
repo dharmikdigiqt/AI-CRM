@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { Box, Text } from "@mantine/core";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { IconMessages, IconUsers, IconWorldDollar } from "@tabler/icons-react";
+import Logo  from "../../assets/logo.jpg"
 
 const DashboardLayout = () => {
   const location = useLocation();
@@ -28,7 +29,10 @@ const DashboardLayout = () => {
     <div className="flex">
       {/* Sidebar */}
       <Box className="w-[15%] bg-white p-4 h-screen overflow-y-auto">
-        <Text className="text-xl font-bold mb-4 cursor-pointer">Dashboard</Text>
+        <div className="items-center justify-center flex  rounded">
+           <img src={Logo} alt="Logo" className="h-20 w-40 cursor-pointer" />
+
+        </div>
         <Box className="flex flex-col mt-5">
           {routePages.map((content, index) => {
             const Component = content.icon || null;
